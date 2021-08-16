@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="hidden px-12 py-6 space-x-12 font-semibold tracking-wide text-gray-100 uppercase md:flex">
                                     <div @click="$scroll('#o-co-jde', {offset: 50})" class="cursor-pointer hover:text-white">O co jde?</div>
-                                    <div @click="$scroll('#zname-reseni', {offset: 50})" class="cursor-pointer hover:text-white">Známe řešení</div>
+                                    <div @click="$scroll('#zname-reseni', {offset: 50})" class="cursor-pointer hover:text-white">Jak na to?</div>
                                     <div @click="$scroll('#chci-se-zapojit', {offset: 50})" class="cursor-pointer hover:text-white">Chci se zapojit</div>
                                 </div>
                                 <div @click="open = true" class="text-white md:hidden">
@@ -89,7 +89,7 @@
                                 </div>
                                 <div x-show="open" class="fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 text-3xl font-semibold bg-white bg-opacity-90 text-primary">
                                     <div @click="open = false" @click="$scroll('#o-co-jde', {offset: 25})" class="cursor-pointer hover:text-gray-800">O co jde?</div>
-                                    <div @click="open = false" @click="$scroll('#zname-reseni', {offset: 25})" class="cursor-pointer hover:text-gray-800">Známe řešení</div>
+                                    <div @click="open = false" @click="$scroll('#zname-reseni', {offset: 25})" class="cursor-pointer hover:text-gray-800">Jak na to?</div>
                                     <div @click="open = false" @click="$scroll('#chci-se-zapojit', {offset: 25})" class="cursor-pointer hover:text-gray-800">Chci se zapojit</div>
                                 </div>
                                 <div x-show="open" @click="open = false" class="fixed top-0 right-0 z-50 px-8 py-6 text-black md:hidden">
@@ -112,11 +112,13 @@
                                 <div class="text-xl italic font-light text-white">
                                     {{ $page['header_text'] }}
                                 </div>
-                                <div class="flex items-center pb-12 mt-12 space-x-6 text-lg tracking-wider pt-sans">
-                                    <div @click="$scroll('#preambule', {offset: 50})" class="hidden px-10 py-5 text-white bg-opacity-75 cursor-pointer md:inline-block hover:text-white bg-primary">
+                                <div class="flex items-center pb-12 mt-12 space-x-6 text-lg tracking-wider whitespace-nowrap pt-sans">
+                                    <div @click="$scroll('#preambule', {offset: 50})" class="hidden px-10 py-5 text-white bg-opacity-75 cursor-pointer whitespace-nowrap md:block hover:text-white bg-primary">
                                         Chci vědět více
                                     </div>
-                                    <img src="img/signature.png" class="h-16 bg-white">
+                                    <div class="">
+                                        <img src="img/signature.png" style="height:72px">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -127,7 +129,7 @@
                         Proč řešit sport?
                     </div>
                     <div class="w-full max-w-6xl px-6 mx-auto mt-6 space-x-6 font-light">
-                        <div class="float-right w-full max-w-sm p-12">
+                        <div class="float-right w-full max-w-sm p-12 lg:max-w-lg">
                             <img src="img/photo.png"/>
                         </div>
                         <div>
