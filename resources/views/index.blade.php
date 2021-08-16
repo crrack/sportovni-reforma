@@ -4,82 +4,6 @@
 ])
 
 @section('content')  
-    <div class="index">
-        <section id="top" class="bg-bottom bg-cover header" style="background-image: url('img/header.jpg')">
-            <div 
-                x-data="{ 
-                    open: false, 
-                    navScroll: false,
-                }"
-                @scroll.window="if (document.body.getBoundingClientRect().top < -100){ navScroll = true }else{ navScroll = false}"
-                class="z-30 flex flex-col justify-between h-full bg-primary bg-opacity-70"
-            >
-                <div 
-                    class="fixed z-30 w-full py-2 bg-opacity-0 bg-primary"  
-                    :class="{ 'bg-opacity-95': navScroll }"
-                >
-                    <div class="flex items-center justify-between w-full max-w-6xl px-8 mx-auto tracking-wide pt-sans">
-                        <div @click="$scroll('#top')" class="py-3 text-3xl font-semibold text-white cursor-pointer">
-                            sportovni-reforma.cz
-                        </div>
-                        <div class="hidden px-12 py-6 space-x-12 font-semibold tracking-wide text-gray-100 uppercase md:flex">
-                            <div @click="$scroll('#o-co-jde', {offset: 50})" class="cursor-pointer hover:text-white">O co jde?</div>
-                            <div @click="$scroll('#zname-reseni', {offset: 50})" class="cursor-pointer hover:text-white">Známe řešení</div>
-                            <div @click="$scroll('#chci-se-zapojit', {offset: 50})" class="cursor-pointer hover:text-white">Chci se zapojit</div>
-                        </div>
-                        <div @click="open = true" class="text-white md:hidden">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"></path>
-                            </svg>
-                        </div>
-                        <div x-show="open" class="fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 text-3xl font-semibold bg-white bg-opacity-90 text-primary">
-                            <div @click="open = false" @click="$scroll('#o-co-jde', {offset: 25})" class="cursor-pointer hover:text-gray-800">O co jde?</div>
-                            <div @click="open = false" @click="$scroll('#zname-reseni', {offset: 25})" class="cursor-pointer hover:text-gray-800">Známe řešení</div>
-                            <div @click="open = false" @click="$scroll('#chci-se-zapojit', {offset: 25})" class="cursor-pointer hover:text-gray-800">Chci se zapojit</div>
-                        </div>
-                        <div x-show="open" @click="open = false" class="fixed top-0 right-0 z-50 px-8 py-6 text-black md:hidden">
-                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full max-w-6xl px-8 mx-auto mt-24 text-white xl:mt-48">
-                    <h1 class="text-4xl font-bold leading-tight sm:text-5xl md:text-8xl pt-sans">
-                        {{ $page['title'] }}
-                    </h1>
-                    <h4 class="mt-8 text-2xl md:text-4xl">
-                        {{ $page['description'] }}
-                    </h4>
-                </div>
-                <div class="flex flex-col justify-between flex-grow w-full max-w-6xl px-8 mx-auto md:flex-row">
-                    <div class="mt-12 md:mt-18 md:w-7/12">
-                        <div class="text-xl italic font-light text-white">
-                            {{ $page['header_text'] }}
-                        </div>
-                        <div class="flex items-center pb-12 mt-12 space-x-6 text-lg tracking-wider pt-sans">
-                            <div @click="$scroll('#preambule', {offset: 50})" class="hidden px-10 py-5 text-white bg-opacity-75 cursor-pointer md:inline-block hover:text-white bg-primary">
-                                Chci vědět více
-                            </div>
-                            <img src="img/signature.png" class="h-16 bg-white">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="preambule">
-            <div class="pt-16 pb-10 text-5xl font-bold text-center pt-sans">
-                Proč řešit sport?
-            </div>
-            <div class="w-full max-w-6xl px-6 mx-auto mt-6 space-x-6 font-light">
-                <div class="float-right w-full max-w-sm p-12">
-                    <img src="img/photo.png"/>
-                </div>
-                <div>
-                    {!! $page['preambule'] !!}
-                </div>
-            </div>
-        </section>
         <section class="mb-20 counts">
             <div class="w-full max-w-6xl pt-20 mx-auto space-y-6 text-center md:space-y-0 md:space-x-6 md:flex text-primary">
                 @foreach ($page['counts']['value'] as $count)
@@ -247,25 +171,6 @@
                 @endforeach
             </div>
         </section>
-        {{-- <section id="zname-reseni" class="pt-16 pb-20">
-            <div class="w-full max-w-4xl mx-auto">
-                <div class="flex flex-col items-center px-4 space-x-6 sm:flex-row lg:px-0">
-                    <div class="font-light">
-                        <p class="mb-4 text-4xl font-bold pt-sans">
-                            Podívejte se na naši online brožuru
-                        </p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Cumque, neque, officia voluptatum ab, quisquam aliquid voluptatibus omnis illo quidem vitae quaerat sit facilis dolor. 
-                        Nisi est nulla accusantium odio quos.
-                    </div>
-                    <div class="pt-4 sm:pt-0">
-                        <button class="px-12 py-5 text-lg font-medium text-white bg-green-600">
-                            Zobrazit
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section> --}}
         <section class="mb-20">
             <div class="w-full max-w-3xl mx-auto mt-6 space-y-2 font-light text-white p-14 bg-primary">
                 <div class="flex items-center mb-8 space-x-6">
@@ -334,10 +239,4 @@
                 </div>
             </div>
         </section> 
-        <section class="py-20 bg-secondary ">
-            <div class="max-w-4xl mx-auto">
-                Copyright © 2021 Reforma Sportu
-            </div>
-        </section> 
-    </div>
 @endsection
