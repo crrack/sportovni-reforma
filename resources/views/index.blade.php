@@ -90,7 +90,7 @@
                 @endforeach
             </div>
         </section>
-        <section id="o-co-jde">
+        {{-- <section id="o-co-jde">
             <div class="pt-20 text-5xl font-bold text-center pt-sans">
                 Klíčové problémy 
             </div>
@@ -208,7 +208,7 @@
                     </div>
                 @endforeach 
             </div>
-        </section>
+        </section> --}}
         <section id="zname-reseni" class="mb-20">
             <div class="pt-16 pb-20 text-5xl font-bold text-center pt-sans">
                 Jak na to?
