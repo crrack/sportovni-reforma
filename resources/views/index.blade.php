@@ -202,7 +202,6 @@
                             }).then((response) => {
                                 return response.json()
                             }).then((response) => {
-                                console.log(response);
                                 if(response.status == 'done') {
                                     this.success = true;
                                 }else {
