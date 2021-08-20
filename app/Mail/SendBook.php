@@ -33,6 +33,6 @@ class SendBook extends Mailable
             ->cc("noreply@sportovni-reforma.cz", "Sportovní reforma")
             ->bcc("noreply@sportovni-reforma.cz", "Sportovní reforma")
             ->replyTo("jakub@sportovni-reforma.cz", "Sportovní reforma")
-            ->subject("Sportovní reforma");
+            ->subject("Brožura");
     }
 }
