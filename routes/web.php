@@ -16,3 +16,4 @@
 //$router->get('/', 'ResourceController@layout');
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'show']);
+Route::post('/send-book', [\App\Http\Controllers\SubscribeController::class, 'sendBook']);

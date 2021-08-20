@@ -100,8 +100,8 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <div x-show="open" class="w-full max-w-5xl px-2 py-4 mx-auto space-y-3 md:flex md:space-y-0 md:space-x-3 md:px-0">
-                                        <div class="p-6 border-4 md:p-12 md:w-1/2 text-primary border-secondary">
+                                    <div x-show="open" class="w-full max-w-5xl px-2 mx-auto my-4 space-y-3 border-4 border-secondary md:flex md:space-y-0 md:px-0">
+                                        <div class="p-6 md:p-12 md:w-1/2 text-primary">
                                             <p class="mb-4 text-2xl font-semibold">
                                                 {{ $consequence['consequence_title'] }}
                                             </p>
@@ -109,7 +109,7 @@
                                                 {!! $consequence['consequence'] !!}
                                             </p>
                                         </div>
-                                        <div class="p-6 border-4 md:p-12 md:w-1/2 text-primary border-secondary">
+                                        <div class="p-6 md:p-12 md:w-1/2 text-primary">
                                             <p class="mb-4 text-2xl font-semibold">
                                                 {{ $consequence['impact_title'] }}
                                             </p>
@@ -179,11 +179,56 @@
                         <p class="text-white text-opacity-80">Dejte nám Váš email a my vám pošleme naši online brožuru.</p>
                     </div>
                 </div>
-                <div class="flex">
-                    <input class="flex-grow px-4 py-4 text-black focus:outline-none" type="text" placeholder="Váš email...">
-                    <button class="px-6 py-4 font-medium text-white bg-green-600">
-                        Odeslat
+                <div 
+                    x-data="{
+                        loading: false,
+                        success: false,
+                        fail: false,
+                        email: null,
+                        send() {
+                            this.loading = true;
+                            fetch('/send-book', {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'Accept': 'application/json, text-plain, */*',
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                    'X-CSRF-Token': '{{ csrf_token() }}'
+                                },
+                                method: 'post',
+                                credentials: 'same-origin',
+                                body: JSON.stringify({
+                                    email: this.email
+                                })
+                            }).then((response) => {
+                                return response.json()
+                            }).then((response) => {
+                                console.log(response);
+                                if(response.status == 'done') {
+                                    this.success = true;
+                                }else {
+                                    this.fail = true;
+                                }
+                                this.loading = false;
+                            });
+                        },
+                    }" 
+                    class="relative flex"
+                >
+                    <input x-model="email" class="flex-grow px-4 py-4 text-black focus:outline-none" type="text" placeholder="Váš email...">
+                    <button @click="send" class="px-6 py-4 font-medium text-white bg-green-600 focus:outline-none">
+                        <span>Odeslat</span>
                     </button>
+                    <div x-show="loading" style="display:none" class="absolute inset-0 flex items-center justify-center text-black bg-white opacity-40">
+                        <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13.75 22c0 .966-.783 1.75-1.75 1.75s-1.75-.784-1.75-1.75.783-1.75 1.75-1.75 1.75.784 1.75 1.75zm-1.75-22c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm10 10.75c.689 0 1.249.561 1.249 1.25 0 .69-.56 1.25-1.249 1.25-.69 0-1.249-.559-1.249-1.25 0-.689.559-1.25 1.249-1.25zm-22 1.25c0 1.105.896 2 2 2s2-.895 2-2c0-1.104-.896-2-2-2s-2 .896-2 2zm19-8c.551 0 1 .449 1 1 0 .553-.449 1.002-1 1-.551 0-1-.447-1-.998 0-.553.449-1.002 1-1.002zm0 13.5c.828 0 1.5.672 1.5 1.5s-.672 1.501-1.502 1.5c-.826 0-1.498-.671-1.498-1.499 0-.829.672-1.501 1.5-1.501zm-14-14.5c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2zm0 14c1.104 0 2 .896 2 2s-.896 2-2.001 2c-1.103 0-1.999-.895-1.999-2s.896-2 2-2z"/>
+                        </svg>
+                    </div>
+                    <div x-show="success" @click.away="success = false" style="display:none" class="absolute inset-0 flex items-center justify-center text-white bg-green-600">
+                        Brožura byla odeslaná na váš email.
+                    </div>
+                    <div x-show="fail" @click.away="fail = false" style="display:none" class="absolute inset-0 flex items-center justify-center text-white bg-red-600">
+                        Odeslání se nepodařilo, zkuste to prosím později.
+                    </div>
                 </div>
             </div>
         </section>

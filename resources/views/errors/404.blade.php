@@ -15,7 +15,7 @@
                 color: #222;
             }
             .error-h1 { 
-                color: #dc2625; 
+                color: #164194; 
                 font-size: 24px;
                 font-weight: bold;
                 margin-bottom: 18px;
@@ -27,7 +27,7 @@
             }
             .error-link {
                 color: #fff;
-                background: #dc2625;
+                background: #164194;
                 padding: 16px 32px;
                 display: inline-block;
                 margin-top: 24px;
