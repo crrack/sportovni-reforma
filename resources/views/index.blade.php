@@ -101,18 +101,14 @@
                                         </div>
                                     </div>
                                     <div x-show="open" class="w-full max-w-5xl px-2 mx-auto my-4 space-y-3 border-4 border-secondary md:flex md:space-y-0 md:px-0">
-                                        <div class="p-6 md:p-12 md:w-1/2 text-primary">
+                                        <div class="p-6 md:p-12 text-primary">
                                             <p class="mb-4 text-2xl font-semibold">
                                                 {{ $consequence['consequence_title'] }}
                                             </p>
                                             <p>
                                                 {!! $consequence['consequence'] !!}
                                             </p>
-                                        </div>
-                                        <div class="p-6 md:p-12 md:w-1/2 text-primary">
-                                            <p class="mb-4 text-2xl font-semibold">
-                                                {{ $consequence['impact_title'] }}
-                                            </p>
+                                            <br>
                                             <p>
                                                 {!! $consequence['impact'] !!}
                                             </p>
