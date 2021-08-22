@@ -167,7 +167,7 @@
                 @endforeach
             </div>
         </section>
-        <section class="mb-20">
+        <section id="chci-se-zapojit" class="mb-20">
             <div class="w-full max-w-3xl mx-auto mt-6 space-y-2 font-light text-white p-14 bg-primary">
                 <div class="flex items-center mb-8 space-x-6">
                     <div class="flex-grow">
@@ -227,7 +227,7 @@
                 </div>
             </div>
         </section>
-        <section id="chci-se-zapojit" class="bg-secondary ">
+        <section class="bg-secondary ">
             <div class="max-w-5xl px-8 mx-auto md:px-0">
                 <div class="pt-16 pb-20 text-5xl font-bold text-center pt-sans">
                     Za projektem stojí:
